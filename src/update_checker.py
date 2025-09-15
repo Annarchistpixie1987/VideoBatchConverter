@@ -9,7 +9,7 @@ class UpdateCheckWorker(QThread):
     finished = pyqtSignal(dict)
     def __init__(self, current_version):
         super().__init__(); self.current_version = current_version
-        self.api_url = f"https://api.github.com/repos/{GITHUB_REPO_OWNER}/{GITHUB_REPO_NAME}/releases/latest"
+        self.api_url = f"https://api.github.com/repos/deuxdoom/VideoBatchConverter/releases/latest"
     def run(self):
         try:
             response = requests.get(self.api_url, timeout=5); response.raise_for_status()

@@ -15,15 +15,16 @@ class SettingsManager:
 
     def load_settings(self):
         return {
+            "preset": self.settings.value("preset", "일반용 / 아카이빙 (균형)", type=str),
             "input_folder": self.settings.value("input_folder", "", type=str),
             "suffix": self.settings.value("suffix", "_h265", type=str),
             "codec": self.settings.value("codec", "H.265 (HEVC) - GPU", type=str),
             "resolution": self.settings.value("resolution", "원본 유지", type=str),
-            "preset": self.settings.value("preset", "p5", type=str),
+            "preset_option": self.settings.value("preset_option", "p5", type=str),
             "rate_control": self.settings.value("rate_control", "CQP", type=str),
             "quality_value": self.settings.value("quality_value", "28", type=str),
             "audio_option": self.settings.value("audio_option", "원본 유지 (Passthrough)", type=str),
-            "output_format": self.settings.value("output_format", "mp4", type=str),
+            "output_format": self.settings.value("output_format", "mkv", type=str),
             "parallel_jobs": self.settings.value("parallel_jobs", 2, type=int),
             "geometry": self.settings.value("geometry"),
             "windowState": self.settings.value("windowState"),

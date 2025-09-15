@@ -9,7 +9,7 @@
 
 ---
 
-![VideoBatchConverter Screenshot](https://raw.githubusercontent.com/deuxdoom/VideoBatchConverter/main/screenshot.png) ## ✨ 소개 (Introduction)
+![VideoBatchConverter Screenshot](https://github.com/deuxdoom/VideoBatchConverter/blob/main/screenshot.png) ## ✨ 소개 (Introduction)
 
 오래된 H.264(AVC) 코덱으로 인코딩된 수많은 동영상 파일들을 최신 고효율 코덱으로 간편하게 변환하여 저장 공간을 절약하고 스트리밍 효율을 높일 수 있도록 설계되었습니다. 특히 NVIDIA 그래픽카드(RTX 시리즈)의 **NVENC 듀얼 인코더**를 최대한 활용하는 **병렬 처리** 기능을 통해 압도적인 변환 속도를 경험할 수 있습니다.
 

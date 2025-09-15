@@ -27,10 +27,10 @@
 
 ## 📦 다운로드 및 설치 (Download & Installation)
 
-1.  **[GitHub Releases 페이지](https://github.com/deuxdoom/VideoBatchConverter/releases)**로 이동합니다.
+1.  [GitHub Releases 페이지](https://github.com/deuxdoom/VideoBatchConverter/releases)로 이동합니다.
 2.  `Assets` 목록에서 최신 버전의 `VideoBatchConverter-vX.X.X.zip` 파일을 다운로드합니다.
 3.  원하는 위치에 압축을 풀고 `VideoBatchConverter.exe`를 실행합니다.
-    > 第一次 실행 시 FFmpeg이 자동으로 다운로드됩니다. (약 80MB)
+    > 첫 실행 시 FFmpeg이 자동으로 다운로드됩니다. (약 80MB)
 
 ## 📖 사용 방법 (How to Use)
 

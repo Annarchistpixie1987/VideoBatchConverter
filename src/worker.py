@@ -1,5 +1,5 @@
 # src/worker.py
-import os, sys, subprocess, logging
+import os, sys, subprocess, logging, json
 from pathlib import Path
 from PyQt6.QtCore import QObject, QRunnable, pyqtSignal
 
@@ -27,6 +27,23 @@ def get_video_codec(file_path):
     try: result = subprocess.run(command, capture_output=True, text=True, check=True, startupinfo=startupinfo); return result.stdout.strip()
     except subprocess.CalledProcessError as e: logging.warning(f"'{file_path}' 코덱 확인 실패: {e.stderr}"); return None
     except FileNotFoundError: logging.error("ffprobe를 찾을 수 없습니다."); return None
+
+def get_media_info(file_path):
+    """ffprobe를 사용하여 미디어 파일의 상세 정보를 JSON으로 반환합니다."""
+    ffprobe_path = get_ffmpeg_path('ffprobe')
+    if not ffprobe_path: return None
+    command = [
+        ffprobe_path, '-v', 'quiet', '-print_format', 'json',
+        '-show_format', '-show_streams', str(file_path)
+    ]
+    startupinfo = None
+    if os.name == 'nt': startupinfo = subprocess.STARTUPINFO(); startupinfo.dwFlags |= subprocess.STARTF_USESHOWWINDOW
+    try:
+        result = subprocess.run(command, capture_output=True, text=True, check=True, startupinfo=startupinfo, encoding='utf-8')
+        return json.loads(result.stdout)
+    except (subprocess.CalledProcessError, json.JSONDecodeError, FileNotFoundError) as e:
+        logging.error(f"'{file_path}'의 미디어 정보 로드 실패: {e}")
+        return None
 
 class WorkerSignals(QObject):
     log = pyqtSignal(str); progress = pyqtSignal(str, int); finished = pyqtSignal(object, bool)
@@ -58,16 +75,10 @@ class FileConversionTask(QRunnable):
             logging.exception(f"'{self.input_file.name}' 처리 중 예외 발생"); self.signals.log.emit(f"치명적 오류: '{self.input_file.name}' - {e}"); self.signals.finished.emit(self, False)
     def stop(self):
         if self.process and self.process.poll() is None: logging.warning(f"FFmpeg 프로세스 강제 종료 시도: {self.input_file.name}"); self.process.terminate()
-
     def build_ffmpeg_command(self, ffmpeg_path, input_file, output_file):
         s = self.settings; ffmpeg_cmd = [ffmpeg_path, '-y', '-i', str(input_file)]; ffmpeg_cmd.extend(['-progress', 'pipe:1', '-nostats']); is_gpu = "GPU" in s['codec']; codec_map = {'H.265 (HEVC) - CPU': 'libx265', 'H.265 (HEVC) - GPU': 'hevc_nvenc', 'AV1 - CPU': 'libaom-av1', 'AV1 - GPU': 'av1_nvenc', 'VP9 - CPU': 'libvpx-vp9', 'AVC (H.264) - CPU': 'libx264', 'AVC (H.264) - GPU': 'h264_nvenc'}; encoder = codec_map[s['codec']]; ffmpeg_cmd.extend(['-c:v', encoder])
-        
-        # --- 해상도 처리 로직 간소화 ---
-        res_map = {'1080p': 'scale=-1:1080', '720p': 'scale=-1:720'}
-        resolution_setting = s['resolution']
-        if resolution_setting in res_map:
-            ffmpeg_cmd.extend(['-vf', res_map[resolution_setting]])
-        
+        res_map = {'1080p': 'scale=-1:1080', '720p': 'scale=-1:720'}; resolution_setting = s['resolution']
+        if resolution_setting in res_map: ffmpeg_cmd.extend(['-vf', res_map[resolution_setting]])
         if is_gpu:
             preset_val = s['preset_option'].split(' ')[0]; ffmpeg_cmd.extend(['-preset', preset_val])
             if s['rate_control'] == 'CQP': ffmpeg_cmd.extend(['-cq', s['quality_value']])

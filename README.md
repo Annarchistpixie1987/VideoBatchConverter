@@ -8,8 +8,7 @@
 ![Platform](https://img.shields.io/badge/platform-windows-lightgrey.svg)
 
 ---
-
-![VideoBatchConverter Screenshot](httpsd://raw.githubusercontent.com/deuxdoom/VideoBatchConverter/main/screenshot.png) 
+<img src="./screenshot.png" alt="VideoBatchConverter Screenshot" width="830" style="vertical-align: middle;">
 
 ## ✨ 소개 (Introduction)
 

